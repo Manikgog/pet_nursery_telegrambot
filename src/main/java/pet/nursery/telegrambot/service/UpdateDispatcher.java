@@ -8,7 +8,7 @@ import pet.nursery.telegrambot.service.handler.MessageHandler;
 
 @Service
 public class UpdateDispatcher {
-    final MessageHandler messageHandler;
+    private final MessageHandler messageHandler;
 
     @Autowired
     TelegramBot bot;
@@ -20,7 +20,7 @@ public class UpdateDispatcher {
 
     public void distribute(Update update) {
         if(update.message() != null && update.message().text() != null) {
-            messageHandler.answer(update);
+            messageHandler.answer(update, bot);
         }
     }
 }
